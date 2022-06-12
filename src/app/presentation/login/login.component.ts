@@ -20,6 +20,10 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    if(sessionStorage.getItem('user'))
+    {
+      this.router.navigate(['home'])
+    }
     this.createForm();
   }
 
@@ -30,7 +34,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  openModal(){
+  openModal() {
     ($('#signupModal') as any).modal('show');
   }
 
