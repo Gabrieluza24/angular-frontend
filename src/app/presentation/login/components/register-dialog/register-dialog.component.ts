@@ -34,6 +34,7 @@ export class RegisterDialogComponent implements OnInit {
   }
 
   onSubmit() {
+    this.registerForm.markAllAsTouched();
     if (this.registerForm.invalid) return;
     const form = this.registerForm.value;
 
