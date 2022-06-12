@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LoginUseCase } from 'src/app/core/usecases/login.usecase';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +12,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private Login: LoginUseCase
   ) {}
   
   ngOnInit(): void {
@@ -25,7 +27,10 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    
+    //Casos de Error
+    const LoginCredentials = this.loginForm.value;
+
+    this.Login.execute(LoginCredentials).subscribe(console.log);
   }
 
 }
