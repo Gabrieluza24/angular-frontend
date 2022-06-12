@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LoginUseCase } from 'src/app/core/usecases/login.usecase';
 import swal from 'sweetalert2';
 
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private Login: LoginUseCase
+    private login: LoginUseCase,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -23,12 +25,12 @@ export class LoginComponent implements OnInit {
   createForm(): void {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(8),Validators.pattern(/^[A-z0-9*/+\-$%&]*$/)]]
+      password: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(8), Validators.pattern(/^[A-z0-9*/+\-$%&]*$/)]]
     });
   }
 
   onSubmit(): void {
-    if(this.loginForm.invalid){
+    if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
       swal.fire({
         icon: 'error',
@@ -41,8 +43,20 @@ export class LoginComponent implements OnInit {
     }
 
     const LoginCredentials = this.loginForm.value;
-
-    this.Login.execute(LoginCredentials).subscribe(console.log);
+    this.login.execute(LoginCredentials).subscribe({
+      next: () => {
+        this.router.navigate(['/home']);
+      },
+      error: () => {
+        swal.fire({
+          icon: 'error',
+          title: '¡Login Error!',
+          customClass: {
+            confirmButton: 'btn btn-primary'
+          }
+        })
+      }
+    });
   }
 
 }

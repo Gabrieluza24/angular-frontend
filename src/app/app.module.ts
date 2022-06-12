@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginModule } from './presentation/login/login.module';
+
 import { DataModule } from './data/data.module';
 import { CoreModule } from './core/core.module';
+import { PresentationModule } from './presentation/presentation.module';
+
 import { authRepository } from './core/repositories/auth.repository';
 import { authLoginRepository } from './data/repository/auth.repository';
 
@@ -17,9 +17,9 @@ import { authLoginRepository } from './data/repository/auth.repository';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    LoginModule,
     DataModule,
     CoreModule,
+    PresentationModule
   ],
   providers: [
     {provide: authRepository, useClass: authLoginRepository}

@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { PresentationModule } from './presentation/presentation.module';
 
 const routes: Routes = [
   {
-    path: 'login',
-    loadChildren: () =>
-      import('./presentation/login/login.module').then((m) => m.LoginModule),
+    path: '',
+    loadChildren: () => PresentationModule
   },
 ];
 
