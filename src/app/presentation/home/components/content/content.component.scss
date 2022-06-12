@@ -3,12 +3,25 @@
     height: 30rem;
   }
 
+.card-body{
+  overflow-y: scroll;
+}
+
   .btn-green{
     justify-content: center;
     align-items: center;
     padding: 0px 20px;
     height: auto;
     background-color: #57b846;
+    border-radius: 25px;
+  }
+
+  .btn-red{
+    justify-content: center;
+    align-items: center;
+    padding: 0px 20px;
+    height: auto;
+    background-color: #c53030;
     border-radius: 25px;
   }
 

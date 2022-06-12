@@ -31,7 +31,11 @@
                         <td>{{category.description}}</td>
                         <td>{{category.idParentCategory}}</td>
                         <td>{{category.createDate | date:'longDate'}}</td>
-                        <td>Actions</td>
+                        <td>
+                          <button type="button" class="btn btn-xs btn-red" (click)="onDelete(category.id)">
+                            <small class="text-white">Delete</small>
+                          </button>
+                        </td>
                       </tr>
                     </tbody>
                   </table>

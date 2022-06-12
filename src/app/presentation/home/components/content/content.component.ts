@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoriesModel } from 'src/app/core/domain/categories';
+import { DeleteCategory } from 'src/app/core/usecases/delete-categories.usecase';
 import { getCategories } from 'src/app/core/usecases/read-categories.usecase';
 
 declare var $ :any;
@@ -14,6 +15,7 @@ export class ContentComponent implements OnInit {
 
   constructor(
     private _categories: getCategories,
+    private _delete: DeleteCategory,
   ) {
   }
 
@@ -27,6 +29,10 @@ export class ContentComponent implements OnInit {
 
   openModal(){
     ($('#createModal') as any).modal('show');
+  }
+
+  onDelete(id:number){
+    this._delete.execute(id).subscribe(console.log);
   }
 
 }
