@@ -1,0 +1,49 @@
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+            <div class="login100-form-title" style="background-image: url('../../assets/images/bg-01.jpg');">
+                <span class="login100-form-title-1">
+                    Sign In
+                </span>
+            </div>
+
+            <form 
+            class="login100-form validate-form d-flex flex-column"
+            [formGroup]="loginForm"
+            (submit)="onSubmit()"
+            >
+                <div class="wrap-input100 validate-input m-b-26 d-flex flex-row">
+                    <span class="label-input100">Email</span>
+                    <input class="input100" type="text" id="email" formControlName="email" [placeholder]="'Enter Email'">
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input m-b-18 d-flex flex-row">
+                    <span class="label-input100">Password</span>
+                    <input class="input100" type="password" id="password" formControlName="password" [placeholder]="'Enter Password'">
+                    <span class="focus-input100"></span>
+                </div>
+                <div class="d-flex flex-row justify-content-between pt-3">
+                    <div class="contact100-form-checkbox mt-1">
+                        <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                        <label class="label-checkbox100" for="ckb1">
+                            Remember me
+                        </label>
+                    </div>
+                    <div>
+                        <a href="#" class="txt1">
+                            Register
+                        </a>
+                    </div>
+                </div>
+                <div class="d-flex flex-row mt-3">
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="login100-form-btn">
+                            Login
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
