@@ -3,6 +3,7 @@ import { filter, Subject } from 'rxjs';
 import { CategoriesModel } from 'src/app/core/domain/categories';
 import { DeleteCategory } from 'src/app/core/usecases/delete-categories.usecase';
 import { getCategories } from 'src/app/core/usecases/read-categories.usecase';
+import swal from 'sweetalert2';
 
 declare var $: any;
 
@@ -46,11 +47,43 @@ export class ContentComponent implements OnInit {
   }
 
   onDelete(id: number) {
-    this._delete.execute(id).subscribe({
-      complete: () => {
-        this.loadData();
+    swal.fire({
+      title: '¿Are you Sure?',
+      text: 'your going to delete this record!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, Delete!',
+      cancelButtonText: 'No'
+    }).then((result) => {
+      if (result.value) {
+        this._delete.execute(id).subscribe({
+          error: () => {
+            swal.fire({
+              icon: 'error',
+              title: '¡Error!',
+              text: 'please verify',
+              customClass: {
+                confirmButton: 'btn btn-primary'
+              },
+            });
+          },
+          next: () => {
+            swal.fire({
+              text: "Category Deleted!",
+              icon: "success",
+              title: "Success",
+              buttonsStyling: false,
+              confirmButtonText: "Ok",
+              customClass: {
+                confirmButton: "btn btn-primary"
+              }
+            })
+          },
+          complete: () => {
+            this.loadData();
+          }
+        });
       }
-    });
+    })
   }
-
 }

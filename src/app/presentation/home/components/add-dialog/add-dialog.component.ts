@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { CreateCategory } from 'src/app/core/usecases/create-categories.usecase';
+import swal from 'sweetalert2';
 
 declare var $: any;
 
@@ -40,6 +41,29 @@ export class AddDialogComponent implements OnInit {
   onSubmit() {
     const form = this.categoryForm.value;
     this._categories.execute(form).subscribe({
+      error: () => {
+        swal.fire({
+          icon: 'error',
+          title: 'Error!',
+          text: 'Please verify and try again!',
+          customClass: {
+            confirmButton: 'btn btn-primary'
+          }
+        })
+      },
+      next: () => {
+        this.hideModal();
+        swal.fire({
+          text: "Category created!",
+          title: 'Success!',
+          icon: "success",
+          buttonsStyling: false,
+          confirmButtonText: "Ok",
+          customClass: {
+            confirmButton: "btn btn-primary"
+          }
+        })
+      },
       complete:() => {
         this.subject.next(true);
       }

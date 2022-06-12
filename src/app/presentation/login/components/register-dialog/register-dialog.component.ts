@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { RegisterUseCase } from 'src/app/core/usecases/register.usecase';
+import swal from 'sweetalert2';
 
 declare var $: any;
 
@@ -12,6 +14,7 @@ export class RegisterDialogComponent implements OnInit {
   public registerForm!: FormGroup;
   constructor(
     private formBuilder: FormBuilder,
+    private _register: RegisterUseCase,
   ) { }
 
   ngOnInit(): void {
@@ -31,10 +34,35 @@ export class RegisterDialogComponent implements OnInit {
   }
 
   onSubmit() {
-    if(this.registerForm.invalid) return;
+    if (this.registerForm.invalid) return;
     const form = this.registerForm.value;
-    
-    console.log(form);
+
+    this._register.execute(form).subscribe({
+      error: () => {
+        swal.fire({
+          icon: 'error',
+          title: 'Sign Up Error!',
+          text: 'Please verify and try again!',
+          customClass: {
+            confirmButton: 'btn btn-primary'
+          }
+        })
+      },
+      next: () => {
+        this.hideModal();
+        swal.fire({
+          text: "Sign Up Complete!",
+          title: 'Success!',
+          icon: "success",
+          buttonsStyling: false,
+          confirmButtonText: "Ok",
+          customClass: {
+            confirmButton: "btn btn-primary"
+          }
+        })
+      }
+    })
+
   }
 
 }

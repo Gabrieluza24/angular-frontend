@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { Observable, finalize } from "rxjs";
 import { UseCase } from "../base/use-case";
 import { IcategoriesRepository } from "../repositories/categories.repository";
 
