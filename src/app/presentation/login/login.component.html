@@ -7,22 +7,45 @@
                 </span>
             </div>
 
-            <form 
-            class="login100-form validate-form d-flex flex-column"
-            [formGroup]="loginForm"
-            (submit)="onSubmit()"
-            >
+            <form class="login100-form validate-form d-flex flex-column" [formGroup]="loginForm" (submit)="onSubmit()">
                 <div class="wrap-input100 validate-input m-b-26 d-flex flex-row">
                     <span class="label-input100">Email</span>
-                    <input class="input100" type="text" id="email" formControlName="email" [placeholder]="'Enter Email'">
+                    <input class="input100" type="text" id="email" formControlName="email"
+                        [placeholder]="'Enter Email'">
                     <span class="focus-input100"></span>
                 </div>
+                <small class="text-danger"
+                    *ngIf="this.loginForm.touched && this.loginForm.get('email')?.errors?.['required']">
+                    this field is required
+                </small>
+                <small class="text-danger"
+                    *ngIf="this.loginForm.touched && this.loginForm.get('email')?.errors?.['email']">
+                    enter a valid email
+                </small>
 
                 <div class="wrap-input100 validate-input m-b-18 d-flex flex-row">
                     <span class="label-input100">Password</span>
-                    <input class="input100" type="password" id="password" formControlName="password" [placeholder]="'Enter Password'">
+                    <input class="input100" type="password" id="password" formControlName="password"
+                        [placeholder]="'Enter Password'">
                     <span class="focus-input100"></span>
                 </div>
+                <small class="text-danger"
+                    *ngIf="this.loginForm.touched && this.loginForm.get('password')?.errors?.['required']">
+                    this field is required
+                </small>
+                <small class="text-danger"
+                    *ngIf="this.loginForm.touched && this.loginForm.get('password')?.errors?.['minlength']">
+                    password must be at least 8 characters
+                </small>
+                <small class="text-danger"
+                    *ngIf="this.loginForm.touched && this.loginForm.get('password')?.errors?.['maxlength']">
+                    password can be max 16 characters
+                </small>
+                <small class="text-danger"
+                    *ngIf="this.loginForm.touched && this.loginForm.get('password')?.errors?.['pattern']">
+                    password have invalids characters
+                </small>
+
                 <div class="d-flex flex-row justify-content-between pt-3">
                     <div class="contact100-form-checkbox mt-1">
                         <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
