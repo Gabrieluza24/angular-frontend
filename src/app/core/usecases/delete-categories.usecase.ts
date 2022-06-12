@@ -10,7 +10,7 @@ export class DeleteCategory implements UseCase<number, void> {
 
   constructor(private categoriesRepository: IcategoriesRepository) { }
 
-  execute(params:number): Observable<void> {
-    return this.categoriesRepository.DeleteCategory(params);
+  execute(params: number): Observable<void> {
+    return this.categoriesRepository.DeleteCategory(params)
   }
 }

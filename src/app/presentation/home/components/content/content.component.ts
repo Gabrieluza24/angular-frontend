@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { filter, Subject } from 'rxjs';
 import { CategoriesModel } from 'src/app/core/domain/categories';
 import { DeleteCategory } from 'src/app/core/usecases/delete-categories.usecase';
 import { getCategories } from 'src/app/core/usecases/read-categories.usecase';
 
-declare var $ :any;
+declare var $: any;
 
 @Component({
   selector: 'app-content',
@@ -11,6 +12,7 @@ declare var $ :any;
   styleUrls: ['./content.component.scss']
 })
 export class ContentComponent implements OnInit {
+  @Input() subject!: Subject<boolean>;
   public categories: CategoriesModel[] = [];
 
   constructor(
@@ -20,19 +22,35 @@ export class ContentComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loadData();
+
+    this.subject.pipe(filter(s => s)).subscribe({
+      next: () => {
+        this.loadData();
+      }
+    })
+  }
+
+  loadData() {
+    this.categories = [];
+
     this._categories.execute().subscribe({
       next: (categories) => {
-        this.categories.push(categories) ;
+        this.categories.push(categories);
       }
     });
   }
 
-  openModal(){
+  openModal() {
     ($('#createModal') as any).modal('show');
   }
 
-  onDelete(id:number){
-    this._delete.execute(id).subscribe(console.log);
+  onDelete(id: number) {
+    this._delete.execute(id).subscribe({
+      complete: () => {
+        this.loadData();
+      }
+    });
   }
 
 }

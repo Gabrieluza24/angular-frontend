@@ -18,13 +18,13 @@ export class categoriesRepository extends IcategoriesRepository {
 
     getAllCategories(): Observable<CategoriesModel> {
         return this.http.get<CategoriesEntity[]>(`${environment.serverUrl}/categories`)
-        .pipe(mergeMap((item) => item))
-        .pipe(map(this.catergoriesMapper.mapFrom));
+            .pipe(mergeMap((item) => item))
+            .pipe(map(this.catergoriesMapper.mapFrom));
     }
 
     CreateCategory(param: Partial<CategoriesModel>): Observable<CategoriesModel> {
-        return this.http.post<CategoriesEntity>(`${environment.serverUrl}/categories`,param)
-        .pipe(map(this.catergoriesMapper.mapFrom));
+        return this.http.post<CategoriesEntity>(`${environment.serverUrl}/categories`, param)
+            .pipe(map(this.catergoriesMapper.mapFrom));
     }
 
     DeleteCategory(param: number): Observable<void> {

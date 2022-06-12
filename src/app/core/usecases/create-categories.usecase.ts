@@ -11,7 +11,7 @@ export class CreateCategory implements UseCase<Partial<CategoriesModel>, Categor
 
   constructor(private categoriesRepository: IcategoriesRepository) { }
 
-  execute(params:Partial<CategoriesModel>): Observable<CategoriesModel> {
-    return this.categoriesRepository.CreateCategory(params);
+  execute(params: Partial<CategoriesModel>): Observable<CategoriesModel> {
+    return this.categoriesRepository.CreateCategory(params)
   }
 }

@@ -2,13 +2,13 @@
 <section>
   <div id="main" class="bg-image vh-100">
     <div class="mask">
-      <app-content></app-content>
+      <app-content [subject]="subject"></app-content>
     </div>
   </div>
 </section>
 <app-footer></app-footer>
 
-<app-add-dialog></app-add-dialog>
+<app-add-dialog [subject]="subject"></app-add-dialog>
 
 
 
