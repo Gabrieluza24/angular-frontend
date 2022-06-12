@@ -9,21 +9,21 @@
                       <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Code</th>
-                        <th scope="col">Tittle</th>
+                        <th scope="col">Title</th>
                         <th scope="col">Description</th>
-                        <th scope="col">Parent</th>
+                        <th scope="col">Parent ID</th>
                         <th scope="col">Created At</th>
                         <th scope="col">Actions</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>  
-                        <td scope="row">ID</td>
-                        <td>Code</td>
-                        <td>Tittle</td>
-                        <td>Description</td>
-                        <td>Parent</td>
-                        <td>Created At</td>
+                      <tr *ngFor="let category of categories">  
+                        <td scope="row">{{category.id}}</td>
+                        <td>{{category.code}}</td>
+                        <td>{{category.title}}</td>
+                        <td>{{category.description}}</td>
+                        <td>{{category.idParentCategory}}</td>
+                        <td>{{category.createDate | date:'longDate'}}</td>
                         <td>Actions</td>
                       </tr>
                     </tbody>

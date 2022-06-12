@@ -8,7 +8,9 @@ import { CoreModule } from './core/core.module';
 import { PresentationModule } from './presentation/presentation.module';
 
 import { authRepository } from './core/repositories/auth.repository';
-import { authLoginRepository } from './data/repository/auth.repository';
+import { authLoginRepository } from './data/repository/login/auth.repository';
+import { IcategoriesRepository } from './core/repositories/categories.repository';
+import { categoriesRepository } from './data/repository/categories/categories.repository';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { authLoginRepository } from './data/repository/auth.repository';
     PresentationModule
   ],
   providers: [
-    {provide: authRepository, useClass: authLoginRepository}
+    {provide: authRepository, useClass: authLoginRepository},
+    {provide: IcategoriesRepository, useClass: categoriesRepository}
+
   ],
   bootstrap: [AppComponent]
 })
