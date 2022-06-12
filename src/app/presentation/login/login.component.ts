@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { LoginUseCase } from 'src/app/core/usecases/login.usecase';
 import swal from 'sweetalert2';
 
+declare var $: any;
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -27,6 +28,10 @@ export class LoginComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(8), Validators.pattern(/^[A-z0-9*/+\-$%&]*$/)]]
     });
+  }
+
+  openModal(){
+    ($('#signupModal') as any).modal('show');
   }
 
   onSubmit(): void {

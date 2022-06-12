@@ -11,6 +11,7 @@ import { FooterComponent } from './home/components/footer/footer.component';
 import { NavbarComponent } from './home/components/navbar/navbar.component';
 import { ContentComponent } from './home/components/content/content.component';
 import { AddDialogComponent } from './home/components/add-dialog/add-dialog.component';
+import { RegisterDialogComponent } from './login/components/register-dialog/register-dialog.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { AddDialogComponent } from './home/components/add-dialog/add-dialog.comp
     NavbarComponent,
     FooterComponent,
     ContentComponent,
-    AddDialogComponent
+    AddDialogComponent,
+    RegisterDialogComponent
   ],
   exports: [
     LoginComponent,

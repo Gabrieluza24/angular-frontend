@@ -1,0 +1,59 @@
+<!-- Modal -->
+<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
+        </div>
+        <div class="modal-body">
+            <form class="login100-form d-flex flex-column" [formGroup]="registerForm">
+                <div class="wrap-input100 validate-input d-flex flex-row">
+                    <span class="label-input100">Email</span>
+                    <input class="input100" type="text" id="email" formControlName="email"
+                        [placeholder]="'Enter Email'">
+                    <span class="focus-input100"></span>
+                </div>
+                    <small class="text-danger"
+                    *ngIf="this.registerForm.touched && this.registerForm.get('email')?.errors?.['required']">
+                    this field is required
+                </small>
+                <small class="text-danger"
+                    *ngIf="this.registerForm.touched && this.registerForm.get('email')?.errors?.['email']">
+                    enter a valid email
+                </small>
+                  <div class="wrap-input100 validate-input m-b-18 d-flex flex-row">
+                    <span class="label-input100">Password</span>
+                    <input class="input100" type="password" id="password" formControlName="password"
+                        [placeholder]="'Enter Password'">
+                    <span class="focus-input100"></span>
+                </div> 
+                <small class="text-danger"
+                *ngIf="this.registerForm.touched && this.registerForm.get('password')?.errors?.['required']">
+                this field is required
+            </small>
+            <small class="text-danger"
+                *ngIf="this.registerForm.touched && this.registerForm.get('password')?.errors?.['minlength']">
+                password must be at least 8 characters
+            </small>
+            <small class="text-danger"
+                *ngIf="this.registerForm.touched && this.registerForm.get('password')?.errors?.['maxlength']">
+                password can be max 16 characters
+            </small>
+            <small class="text-danger"
+                *ngIf="this.registerForm.touched && this.registerForm.get('password')?.errors?.['pattern']">
+                password have invalids characters
+            </small>
+            </form>
+            <div class="d-flex flex-row mt-3 justify-content-center">
+                <div class="d-flex justify-content-center">
+                    <button  class="login100-form-btn cancel" (click)="hideModal()">
+                        Cancel
+                    </button>
+                    <button type="submit" class="login100-form-btn"(click)="onSubmit()" [disabled]="registerForm.invalid">
+                        Sign Up
+                    </button>
+                </div>
+            </div>
+      </div>
+    </div>
+  </div>

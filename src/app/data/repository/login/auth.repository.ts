@@ -21,4 +21,9 @@ export class authLoginRepository extends authRepository {
         return this.http.post<LoginResponseEntity>(`${environment.serverUrl}/Auth/login`, credentials)
             .pipe(map(this.LoginResponseMapper.mapFrom));
     }
+
+    register(credentials: LoginCredentials): Observable<LoginResponse> {
+        return this.http.post<LoginResponseEntity>(`${environment.serverUrl}/users`, credentials)
+        .pipe(map(this.LoginResponseMapper.mapFrom));
+    }
 }
