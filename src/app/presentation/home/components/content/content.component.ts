@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CategoriesModel } from 'src/app/core/domain/categories';
 import { getCategories } from 'src/app/core/usecases/read-categories.usecase';
 
+declare var $ :any;
+
 @Component({
   selector: 'app-content',
   templateUrl: './content.component.html',
@@ -20,7 +22,11 @@ export class ContentComponent implements OnInit {
       next: (categories) => {
         this.categories.push(categories) ;
       }
-    })
+    });
+  }
+
+  openModal(){
+    ($('#createModal') as any).modal('show');
   }
 
 }

@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './home/components/footer/footer.component';
 import { NavbarComponent } from './home/components/navbar/navbar.component';
 import { ContentComponent } from './home/components/content/content.component';
+import { AddDialogComponent } from './home/components/add-dialog/add-dialog.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { ContentComponent } from './home/components/content/content.component';
     HomeComponent,
     NavbarComponent,
     FooterComponent,
-    ContentComponent
+    ContentComponent,
+    AddDialogComponent
   ],
   exports: [
     LoginComponent,

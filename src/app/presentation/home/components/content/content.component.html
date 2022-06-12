@@ -2,7 +2,14 @@
     <div class="row">
         <div class="col">
             <div class="card mb-3">
-                <div class="card-header">Categories</div>
+                <div class="card-header d-flex flex-row justify-content-between">
+                  <span class="d-flex card-title mt-1">Categories</span>
+                  <div class="d-flex">
+                    <button type="button" class="btn btn-xs btn-green" (click)="openModal()">
+                      <small class="text-white button-text">Create</small>
+                    </button>
+                  </div>
+                </div>
                 <div class="card-body">
                   <table class="table table-striped">
                     <thead>
