@@ -12,6 +12,7 @@ import { NavbarComponent } from './home/components/navbar/navbar.component';
 import { ContentComponent } from './home/components/content/content.component';
 import { AddDialogComponent } from './home/components/add-dialog/add-dialog.component';
 import { RegisterDialogComponent } from './login/components/register-dialog/register-dialog.component';
+import { UpdateDialogComponent } from './home/components/update-dialog/update-dialog.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { RegisterDialogComponent } from './login/components/register-dialog/regi
     FooterComponent,
     ContentComponent,
     AddDialogComponent,
-    RegisterDialogComponent
+    RegisterDialogComponent,
+    UpdateDialogComponent
   ],
   exports: [
     LoginComponent,

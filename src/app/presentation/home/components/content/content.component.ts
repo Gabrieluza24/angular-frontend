@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { filter, Subject } from 'rxjs';
 import { CategoriesModel } from 'src/app/core/domain/categories';
 import { DeleteCategory } from 'src/app/core/usecases/delete-categories.usecase';
@@ -14,6 +14,7 @@ declare var $: any;
 })
 export class ContentComponent implements OnInit {
   @Input() subject!: Subject<boolean>;
+  @Output() category: EventEmitter<CategoriesModel> = new EventEmitter<CategoriesModel>();
   public categories: CategoriesModel[] = [];
 
   constructor(
@@ -85,5 +86,9 @@ export class ContentComponent implements OnInit {
         });
       }
     })
+  }
+
+  Update(category: CategoriesModel) {
+    this.category.emit(category);
   }
 }

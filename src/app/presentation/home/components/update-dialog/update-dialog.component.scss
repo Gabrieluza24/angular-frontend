@@ -1,0 +1,16 @@
+@import 'src/assets/styles.scss';
+  
+.login100-form-btn{
+    height: auto;
+    width: auto;
+
+    &.cancel{
+        background-color: gray;
+    }
+}
+
+.button-position{
+    position: fixed;
+    top: 60%;
+    left: 39%;
+}

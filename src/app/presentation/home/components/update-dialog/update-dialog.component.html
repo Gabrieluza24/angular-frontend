@@ -1,0 +1,44 @@
+<!-- Modal -->
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Update a category</h5>
+            </div>
+            <div class="modal-body">
+                <form class="login100-form d-flex flex-column" [formGroup]="categoryForm">
+                    <div class="wrap-input100 validate-input d-flex flex-row">
+                        <span class="label-input100">Code</span>
+                        <input class="input100" type="text" id="code" formControlName="code">
+                        <span class="focus-input100"></span>
+                    </div>
+                    <div class="wrap-input100 validate-input m-b-18 d-flex flex-row">
+                        <span class="label-input100">Title</span>
+                        <input class="input100" type="text" id="title" formControlName="title">
+                        <span class="focus-input100"></span>
+                    </div>
+                    <div class="wrap-input100 validate-input d-flex flex-row">
+                        <span class="label-input100">Description</span>
+                        <input class="input100" type="text" id="description" formControlName="description">
+                        <span class="focus-input100"></span>
+                    </div>
+                    <div class="wrap-input100 validate-input d-flex flex-row">
+                        <span class="label-input100">ParentID</span>
+                        <input class="input100" type="text" id="idParentCategory" formControlName="idParentCategory">
+                        <span class="focus-input100"></span>
+                    </div>
+                </form>
+                <div class="d-flex flex-row mt-3 justify-content-center">
+                    <div class="d-flex justify-content-center">
+                        <button class="login100-form-btn cancel" (click)="hideModal()">
+                            cancel
+                        </button>
+                        <button type="submit" (click)="onSubmit()" class="login100-form-btn">
+                            Submit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

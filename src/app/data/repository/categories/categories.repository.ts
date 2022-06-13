@@ -27,6 +27,11 @@ export class categoriesRepository extends IcategoriesRepository {
             .pipe(map(this.catergoriesMapper.mapFrom));
     }
 
+    UpdateCategory(param: Partial<CategoriesModel>): Observable<CategoriesModel> {
+        return this.http.put<CategoriesEntity>(`${environment.serverUrl}/categories`, param)
+            .pipe(map(this.catergoriesMapper.mapFrom));
+    }
+
     DeleteCategory(param: number): Observable<void> {
         return this.http.delete<void>(`${environment.serverUrl}/categories/${param}`);
     }
