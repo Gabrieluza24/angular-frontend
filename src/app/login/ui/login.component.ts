@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     if(sessionStorage.getItem('user'))
     {
-      this.router.navigate(['categories'])
+      this.router.navigate([''])
     }
     this.createForm();
   }
