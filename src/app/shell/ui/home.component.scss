@@ -1,16 +1,11 @@
 .bg-image{
   background-image: url('https://www.innovwebsolutions.com/wp-content/themes/twentyseventeen/assets/images/mid2.jpg');
-  z-index: 0;
   background-size: cover;
   width: 100%;
 }
 
 .mask{
-  //background-color: rgba(250, 182, 162, 0.15);
-  position: absolute;
-  z-index: 1;
-  margin-top: 2rem;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  padding-top: 11rem;
 }

@@ -13,8 +13,8 @@ declare var $: any;
   styleUrls: ['./content.component.scss']
 })
 export class ContentComponent implements OnInit {
-  @Input() subject!: Subject<boolean>;
   @Output() category: EventEmitter<CategoriesModel> = new EventEmitter<CategoriesModel>();
+  subject: Subject<boolean> = new Subject<boolean>();
   public categories: CategoriesModel[] = [];
 
   constructor(
