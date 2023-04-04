@@ -1,0 +1,20 @@
+version: '3.9'
+
+#create a volume for the my sql container.To ensure Data persists after my sql container is stopped
+volumes:
+  datafiles:
+
+services:
+  angular:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "4200:80"
+    environment:
+      - production=false,
+      - serverUrl='http://localhost:3000'
+    restart: always
+
+
+  

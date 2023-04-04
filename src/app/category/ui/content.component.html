@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card mb-3">
+                <div class="card-header d-flex flex-row justify-content-between">
+                  <span class="d-flex card-title mt-1">Categories</span>
+                  <div class="d-flex">
+                    <button type="button" class="btn btn-xs btn-green" (click)="openModal()">
+                      <small class="text-white button-text">Create</small>
+                    </button>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Code</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Parent ID</th>
+                        <th scope="col">Created At</th>
+                        <th scope="col">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let category of categories">  
+                        <td scope="row">{{category.id}}</td>
+                        <td>{{category.code}}</td>
+                        <td>{{category.title}}</td>
+                        <td>{{category.description}}</td>
+                        <td>{{category.idParentCategory}}</td>
+                        <td>{{category.createDate | date:'longDate'}}</td>
+                        <td>
+                          <button type="button" class="btn btn-xs btn-blue" (click)="Update(category)">
+                            <small class="text-white">Update</small>
+                          </button>
+                          <button type="button" class="btn btn-xs btn-red" (click)="onDelete(category.id)">
+                            <small class="text-white">Delete</small>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+
+<!-- <app-content [subject]="subject" ></app-content> -->
+<app-add-dialog [subject]="subject"></app-add-dialog>
+
+<ng-container *ngIf="category">
+  <app-update-dialog [subject]="subject"></app-update-dialog>
+</ng-container>
